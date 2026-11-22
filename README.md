@@ -21,3 +21,7 @@ npm run preview
 The production site is generated in `dist/`. Netlify can build it using `npm run build` and publish `dist`. `netlify.toml` includes the SPA fallback for direct routes.
 
 Currency is fixed to AED. The app does not connect to banks or external APIs.
+
+## Run on GitHub Pages
+
+A GitHub Actions workflow is included at `.github/workflows/deploy.yml`. Push the repository to GitHub, open **Settings → Pages**, set **Source** to **GitHub Actions**, and push to the `main` branch. The workflow builds the site and publishes it; the resulting URL appears in the workflow run or on the Pages settings screen. Project site assets use the repository path automatically during the Pages build.

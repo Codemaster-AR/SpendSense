@@ -1,7 +1,8 @@
 # SpendSense
 
 SpendSense is a local-first budgeting and financial literacy app for students and young adults in the UAE. It includes a personalized dashboard, monthly budget planner, expense tracker, savings goals, interactive decision challenges, a pretend-money purchase simulation, reports, and Money Talks prompts.
-
+## Recommended: Use browser:
+Go to codemaster-ar.github.io/spendsense/
 ## Run locally
 
 ```sh

@@ -2,7 +2,7 @@
 
 SpendSense is a local-first budgeting and financial literacy app for students and young adults in the UAE. It includes a personalized dashboard, monthly budget planner, expense tracker, savings goals, interactive decision challenges, a pretend-money purchase simulation, reports, and Money Talks prompts with a live, generic personal-finance news feed, and a locally tracked daily activity streak.
 ## Recommended: Use browser:
-Go to [Quantal-Universe.github.io/SpendSense](Quantal-Universe.github.io/SpendSense)
+Go to [https://quantal-universe.github.io/SpendSense/](https://quantal-universe.github.io/SpendSense/)
 ## Run locally
 
 ```sh

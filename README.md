@@ -10,7 +10,15 @@ npm install
 npm run dev
 ```
 
-Vite prints a local URL to open in your browser. Your profile and financial data are saved in that browser using localStorage. They do not sync to another device and may be lost if browser data is cleared. The optional 4-digit PIN is only a local screen lock; it is not an online account or secure cloud authentication.
+Vite prints a local URL to open in your browser. SpendSense signs users in with a passwordless email link and syncs profile and budgeting data to each user’s Supabase account. On first sign-in, existing browser data is copied to the account if it has no saved data yet. The optional 4-digit PIN stays local to that browser and is not uploaded.
+
+## Supabase setup
+
+The app reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` from the environment. For local development, put them in an ignored `.env.local` file. The publishable key is intended for browser code; never use a Supabase secret or service-role key here.
+
+Before the first sign-in, open the Supabase SQL Editor and run `supabase/migrations/202611230001_user_data.sql`. It creates the per-user data table and Row Level Security policies.
+
+For GitHub Pages, add repository Actions variables named `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` under **Settings → Secrets and variables → Actions → Variables**. The deployment workflow passes them into the Vite production build. Supabase Auth URL Configuration should list the deployed site and local development URL as allowed redirects.
 
 ## Production build
 

@@ -36,3 +36,12 @@ Currency follows the selected country. Changing country converts saved monetary 
 A GitHub Actions workflow is included at `.github/workflows/deploy.yml`. Push the repository to GitHub, open **Settings → Pages**, set **Source** to **GitHub Actions**, and push to the `main` branch. The workflow builds the site and publishes it; the resulting URL appears in the workflow run or on the Pages settings screen. Project site assets use the repository path automatically during the Pages build.
 
 Exchange-rate attribution: [Rates by ExchangeRate-API](https://www.exchangerate-api.com). Rates are informational, update daily on the open endpoint, and may be unavailable; SpendSense converts saved amounts only after the user reviews and confirms the displayed rate.
+
+## Optional OpenRouter AI
+
+The dashboard AI helper and generated summaries are optional and stay locked until the user connects OpenRouter. The browser does not contain an app-owned OpenRouter key. This app requires a secure OAuth backend endpoint configured as `VITE_OPENROUTER_AUTH_ENDPOINT`; it must implement:
+
+- `POST` JSON `{ callback_url, code_challenge }` to create an OpenRouter PKCE authorization code and return `{ authorization_url }`.
+- `PUT` JSON `{ code, code_verifier }` to exchange the user-approved code and return `{ key }`.
+
+The backend should use the OpenRouter OAuth API, restrict callback URLs to the SpendSense production/local origins, and never log authorization codes or returned keys. A GitHub Pages-only build cannot host this endpoint, so deploy it as a Supabase Edge Function or another serverless function and add its URL as the `VITE_OPENROUTER_AUTH_ENDPOINT` Actions variable. OpenRouter API keys are user-controlled credentials; AI requests and selected app context are sent directly from the browser to OpenRouter after the user connects and chooses an AI action. Users can disconnect from the chat panel. Avoid sending account identifiers or private notes.
